@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anonymous Evaluation Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-pattern"></div>
+    <div class="header-content">
+      <h1>Anonymous Evaluation Form</h1>
+      <div class="font-accent">Secure · Anonymous · Confidential</div>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="background-pattern"></div>
+    <div class="form-content">
+      <div class="intro">
+        <div class="oblation-icon"></div>
+        <p>This anonymous evaluation form allows you to provide unidentifiable feedback on whatever topic you are answering. Your input can be seen by the author of this form but cannot be traced back to you.</p>
+      </div>
+      
+      <form id="evaluation-form">
+        <div class="form-group">
+          <label for="dropdownselect">College:</label>
+          <select id="dropdownselect" required>
+            <option value="default">Select a College</option>
+            <option value="Option1">College of Education</option>
+            <option value="Option2">College of Engineering</option>
+            <option value="Option3">College of Science</option>
+            <option value="Option4">College of Arts and Letters</option>
+            <option value="Option5">College of Social Sciences and Philosophy</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="dropdownselect">Year Level (Optional):</label>
+          <select id="dropdownselect">
+            <option value="default">Prefer not to say</option>
+            <option value="Option1">First Year</option>
+            <option value="Option2">Second Year</option>
+            <option value="Option3">Third Year</option>
+            <option value="Option4">Fourth Year</option>
+            <option value="Option5">Fifth Year and above</option> 
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>How would you rate the overall cybersecurity awareness in your department?</label>
+          <div class="rating-group">
+            <div class="rating-option">
+              <input type="radio" id="radio-1" name="radio" value="1">
+              <label for="radio-1">Very Low</label>
+            </div>
+            <div class="rating-option">
+              <input type="radio" id="radio-2" name="radio" value="2">
+              <label for="radio-2">Low</label>
+            </div>
+            <div class="rating-option">
+              <input type="radio" id="radio-3" name="radio" value="3">
+              <label for="radio-3">Moderate</label>
+            </div>
+            <div class="rating-option">
+              <input type="radio" id="radio-4" name="radio" value="4">
+              <label for="radio-4">High</label>
+            </div>
+            <div class="rating-option">
+              <input type="radio" id="radio-5" name="radio" value="5">
+              <label for="radio-5">Very High</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label>Have you observed any potential security vulnerabilities</label>
+          <div class="slide-level">
+            <div class="slide-meter"></div>
+            <input type="range" class="slide-slider" min="1" max="10" value="5" id="vulnerability-level">
+            <div class="rating-group">
+              <span>No concerns</span>
+              <span>Moderate issues</span>
+              <span>Critical vulnerabilities</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="text-details">Please describe any security concerns or vulnerabilities (without including sensitive data):</label>
+          <textarea id="text-details" rows="4" placeholder="Please provide details of your observations..."></textarea>
+        </div>
+
+
+        <div class="form-group">
+          <label>Which cybersecurity measures do you think need improvement? (Select all that apply)</label>
+          <div>
+            <input type="checkbox" id="checkbox-1" name="checkbox" value="password">
+            <label for="checkbox-1">Password policies</label>
+          </div>
+          <div>
+            <input type="checkbox" id="checkbox-2" name="checkbox" value="training">
+            <label for="checkbox-2">Security training & awareness</label>
+          </div>
+          <div>
+            <input type="checkbox" id="checkbox-3" name="checkbox" value="access">
+            <label for="checkbox-3">Access control</label>
+          </div>
+          <div>
+            <input type="checkbox" id="checkbox-4" name="checkbox" value="network">
+            <label for="checkbox-4">Network security</label>
+          </div>
+          <div>
+            <input type="checkbox" id="checkbox-5" name="checkbox" value="incident">
+            <label for="checkbox-5">Incident response</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="text-details">What suggestions do you have for improving cybersecurity?</label>
+          <textarea id="text-details" rows="4" placeholder="Share your ideas for enhancing security..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Have you received cybersecurity training in the last year?</label>
+          <div class="rating-group">
+            <div class="rating-option">
+              <input type="radio" id="radio-1" name="radio" value="1">
+              <label for="radio-1">Yes</label>
+            </div>
+            <div class="rating-option">
+              <input type="radio" id="radio-2" name="radio" value="2">
+              <label for="radio-2">No</label>
+            </div>
+            <div class="rating-option">
+              <input type="radio" id="radio-3" name="radio" value="3">
+              <label for="radio-3">Unsure</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="text-details">Additional comments or concerns:</label>
+          <textarea id="text-details" rows="4" placeholder="Any other feedback you'd like to share..."></textarea>
+        </div>
+
+        <button type="submit">Submit Evaluation</button>
+      </form>
+    </div>
+  </div>
+  
+  <footer>
+    <p>University of the Philippines Diliman - Anonymous Evaluation Form</p>
+    <p>All responses are anonymous and confidential</p>
+  </footer>
+  
+  <script>
+    document.getElementById('evaluation-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your feedback! Your response has been submitted anonymously.');
+      this.reset();
+    });
+    
+    document.querySelector('.slide-slider').addEventListener('input', function() {
+      const value = this.value;
+      const percentage = (value - 1) / 9 * 100;
+      document.querySelector('.slide-meter').style.background = 
+        `linear-gradient(to right, var(--black) ${percentage}%, var(--gold) ${percentage}%)`;
+    });
+  </script>
+</body>
+</html>
